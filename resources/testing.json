@@ -1,0 +1,36 @@
+
+{   "InvoiceNo": 224,   "Country": "Ciutat Vella",   "Quantity": 1 }
+{   "InvoiceNo": 50,   "Country": "Ciutat Vella",   "Quantity": 2 }
+{   "InvoiceNo": 43,   "Country": "Ciutat Vella",   "Quantity": 3 }
+{   "InvoiceNo": 95,   "Country": "Ciutat Vella",   "Quantity": 4 }
+{   "InvoiceNo": 124,   "Country": "Eixample",   "Quantity": 5 }
+{   "InvoiceNo": 191,   "Country": "Eixample",   "Quantity": 6 }
+{   "InvoiceNo": 176,   "Country": "Eixample",   "Quantity": 7 }
+{   "InvoiceNo": 158,   "Country": "Eixample",   "Quantity": 8 }
+{   "InvoiceNo": 220,   "Country": "Eixample",   "Quantity": 9 }
+{   "InvoiceNo": 143,   "Country": "Eixample",   "Quantity": 10 }
+{   "InvoiceNo": 180,   "Country": "Sants-Montjuic",   "Quantity": 11 }
+{   "InvoiceNo": 10,   "Country": "Sants-Montjuic",   "Quantity": 12 }
+{   "InvoiceNo": 124,   "Country": "Sants-Montjuic",   "Quantity": 13 }
+{   "InvoiceNo": 47,   "Country": "Sants-Montjuic",   "Quantity": 14 }
+{   "InvoiceNo": 79,   "Country": "Sants-Montjuic",   "Quantity": 15 }
+{   "InvoiceNo": 80,   "Country": "Sants-Montjuic",   "Quantity": 16 }
+{   "InvoiceNo": 84,   "Country": "Sants-Montjuic",   "Quantity": 17 }
+{   "InvoiceNo": 195,   "Country": "Sants-Montjuic",   "Quantity": 18 }
+{   "InvoiceNo": 173,   "Country": "Les Corts",   "Quantity": 19 }
+{   "InvoiceNo": 85,   "Country": "Les Corts",   "Quantity": 20 } 
+{   "InvoiceNo": 37,   "Country": "Les Corts",   "Quantity": 21 }
+{   "InvoiceNo": 16,   "Country": "SarriaSantGervasi",   "Quantity": 22 }
+{   "InvoiceNo": 119,   "Country": "SarriaSantGervasi",   "Quantity": 23 }
+{   "InvoiceNo": 71,   "Country": "SarriaSantGervasi",   "Quantity": 24 }
+{   "InvoiceNo": 104,   "Country": "SarriaSantGervasi",   "Quantity": 25 }
+{   "InvoiceNo": 203,   "Country": "SarriaSantGervasi",   "Quantity": 26 }
+{   "InvoiceNo": 150,   "Country": "SarriaSantGervasi",   "Quantity": 27 }
+{   "InvoiceNo": 66,   "Country": "Gracia",   "Quantity": 28 }
+{   "InvoiceNo": 37,   "Country": "Gracia",   "Quantity": 29 }
+{   "InvoiceNo": 57,   "Country": "Gracia",   "Quantity": 30 }
+{   "InvoiceNo": 242,   "Country": "Gracia",   "Quantity": 31 }
+{   "InvoiceNo": 168,   "Country": "Gracia",   "Quantity": 32 }
+{   "InvoiceNo": 117,   "Country": "HortaGuinardo",   "Quantity": 33 }
+{   "InvoiceNo": 27,   "Country": "HortaGuinardo",   "Quantity": 34 }
+{   "InvoiceNo": 149,   "Country": "HortaGuinardo",   "Quantity": 35 }
