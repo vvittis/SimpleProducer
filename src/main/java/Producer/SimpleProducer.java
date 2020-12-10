@@ -1,19 +1,24 @@
+package Producer;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Properties;
+
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+
+import javax.swing.*;
 
 
 //Create java class named “SimpleProducer”
 public class SimpleProducer {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
 
         //Assign topicName to string variable
-        String topicName = "topic1";
+        String topicName = "lawless";
 
         // create instance for properties to access producer configs
         Properties props = new Properties();
@@ -61,9 +66,9 @@ public class SimpleProducer {
 
 
         //key-serializer -> string
-        props.put("key.serializer","org.apache.kafka.common.serialization.StringSerializer");
+        props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         //value-serializer -> string
-        props.put("value.serializer","org.apache.kafka.common.serialization.StringSerializer");
+        props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
         //Producer
         Producer<String, String> producer = new KafkaProducer<String, String>(props);
@@ -72,23 +77,60 @@ public class SimpleProducer {
         BufferedReader br = new BufferedReader(new FileReader(args[0])); // input file
         String line = br.readLine();
         int count = 0;
+        int counter_class1 = 0;
+        int counter_class2 = 0;
+        int temp_count = 0;
+        int temp_count1 = 0;
         //System.out.println(line);
         while (line != null) {
             //System.out.println(line);
+            /*BANK NOTES*/
             count++;
             String keyLine = line.trim();
+            String[] class1 = line.split(",");
+            String[] class2 = line.split(",");
             // Testing tuples
-            if (count % 8 == 0) { keyLine = keyLine.concat(",-5").concat(",").concat(Integer.toString(count)); }
+            if (count > 120 && count < 180) {
+
+                if (class1[6].equals("1")) {
+                    counter_class1++;
+
+                    if (counter_class1 <= 20) {
+                        temp_count1++;
+                        keyLine = keyLine.concat(",-5").concat(",").concat(Integer.toString(count));
+                    } else {
+                        keyLine = keyLine.concat(",5").concat(",").concat(Integer.toString(count));
+                    }
+                }
+
+                if (class2[6].equals("0")) {
+                    counter_class2++;
+
+                    if (counter_class2 <= 20) {
+                        temp_count++;
+                        keyLine = keyLine.concat(",-5").concat(",").concat(Integer.toString(count));
+                    } else {
+                        keyLine = keyLine.concat(",5").concat(",").concat(Integer.toString(count));
+                    }
+                }
+            }
             // Predicted tuples
-            else if( count == 5 || count == 10 || count == 15) { keyLine = keyLine.concat(",-10").concat(",").concat(Integer.toString(count)); }
-            // Traininf tuples
-            else { keyLine = keyLine.concat(",5").concat(",").concat(Integer.toString(count)); }
+            else if (count == 80 || count == 86 || count == 186 || count == 182 || count == 196 || count == 33) {
+                keyLine = keyLine.concat(",-10").concat(",").concat(Integer.toString(count));
+            }
+            // Training tuples
+            else {
+                keyLine = keyLine.concat(",5").concat(",").concat(Integer.toString(count));
+            }
 
             System.out.println(keyLine);
-            producer.send(new ProducerRecord<String, String>(topicName,String.valueOf(count),keyLine));
+            producer.send(new ProducerRecord<String, String>(topicName, String.valueOf(count), keyLine));
             line = br.readLine();
         }
-
+        System.out.println("Counter1: " + counter_class1);
+        System.out.println("Counter2: " + counter_class2);
+        System.out.println("Real Counter 1: " + temp_count1);
+        System.out.println("Real Counter 2: " + temp_count);
         br.close();
         producer.close();
 
