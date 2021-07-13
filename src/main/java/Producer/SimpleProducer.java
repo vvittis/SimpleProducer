@@ -18,8 +18,8 @@ public class SimpleProducer {
 
 
         //Assign topicName to string variable
-        String topicName = "lawless";
-
+        String topicName = "SineTopic";
+        /* SeaDriftTopic ElectricityTopic SineTopic */
         // create instance for properties to access producer configs
         Properties props = new Properties();
 
@@ -74,7 +74,7 @@ public class SimpleProducer {
         Producer<String, String> producer = new KafkaProducer<String, String>(props);
 
         //Read the file line by line and send to topic topicName
-        BufferedReader br = new BufferedReader(new FileReader(args[0])); // input file
+        BufferedReader br = new BufferedReader(new FileReader("data_source/Concept_Drift_Datasets/sine1_w_50_n_01/sine1_w_50_n_0.1_101.csv")); // input file
         String line = br.readLine();
         int count = 0;
         int counter_class1 = 0;
@@ -87,42 +87,19 @@ public class SimpleProducer {
             /*BANK NOTES*/
             count++;
             String keyLine = line.trim();
-            String[] class1 = line.split(",");
-            String[] class2 = line.split(",");
+            String[] instance_class = line.split(",");
             // Testing tuples
-            if (count > 120 && count < 180) {
-
-                if (class1[6].equals("1")) {
-                    counter_class1++;
-
-                    if (counter_class1 <= 20) {
-                        temp_count1++;
-                        keyLine = keyLine.concat(",-5").concat(",").concat(Integer.toString(count));
-                    } else {
-                        keyLine = keyLine.concat(",5").concat(",").concat(Integer.toString(count));
-                    }
-                }
-
-                if (class2[6].equals("0")) {
-                    counter_class2++;
-
-                    if (counter_class2 <= 20) {
-                        temp_count++;
-                        keyLine = keyLine.concat(",-5").concat(",").concat(Integer.toString(count));
-                    } else {
-                        keyLine = keyLine.concat(",5").concat(",").concat(Integer.toString(count));
-                    }
-                }
-            }
-            // Predicted tuples
-            else if (count == 80 || count == 86 || count == 186 || count == 182 || count == 196 || count == 33) {
-                keyLine = keyLine.concat(",-10").concat(",").concat(Integer.toString(count));
+            if (count > 0  && instance_class[instance_class.length-1].equals("1") && Math.random() > 0.999 && counter_class1 < 100) {
+                counter_class1++;
+                keyLine = keyLine.concat(",-5").concat(",").concat(Integer.toString(count));
+            } else if (count > 0 && instance_class[instance_class.length-1].equals("0") && Math.random() > 0.999 && counter_class2 < 100) {
+                counter_class2++;
+                keyLine = keyLine.concat(",-5").concat(",").concat(Integer.toString(count));
             }
             // Training tuples
             else {
                 keyLine = keyLine.concat(",5").concat(",").concat(Integer.toString(count));
             }
-
             System.out.println(keyLine);
             producer.send(new ProducerRecord<String, String>(topicName, String.valueOf(count), keyLine));
             line = br.readLine();
