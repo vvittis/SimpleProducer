@@ -16,7 +16,7 @@ public class SimpleProducerFromReadySource {
 
 
         //Assign topicName to string variable
-        String topicName = "health_dataset_topic2";
+        String topicName = "TestTopic";
 
         // create instance for properties to access producer configs
         Properties props = new Properties();
@@ -82,8 +82,6 @@ public class SimpleProducerFromReadySource {
             System.out.println(line);
             producer.send(new ProducerRecord<String, String>(topicName, String.valueOf(count), line));
             line = br.readLine();
-
-
         }
 
         br.close();

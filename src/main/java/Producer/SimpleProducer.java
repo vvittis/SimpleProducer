@@ -18,7 +18,7 @@ public class SimpleProducer {
 
 
         //Assign topicName to string variable
-        String topicName = "SineTopic";
+        String topicName = "SineTopic123";
         /* SeaDriftTopic ElectricityTopic SineTopic */
         // create instance for properties to access producer configs
         Properties props = new Properties();
@@ -74,7 +74,7 @@ public class SimpleProducer {
         Producer<String, String> producer = new KafkaProducer<String, String>(props);
 
         //Read the file line by line and send to topic topicName
-        BufferedReader br = new BufferedReader(new FileReader("data_source/Concept_Drift_Datasets/sine1_w_50_n_01/sine1_w_50_n_0.1_101.csv")); // input file
+        BufferedReader br = new BufferedReader(new FileReader(args[0])); // input file
         String line = br.readLine();
         int count = 0;
         int counter_class1 = 0;
